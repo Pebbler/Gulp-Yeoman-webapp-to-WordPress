@@ -14,7 +14,7 @@ Add these comments so gulp will recognize you want to split-up your index file t
 
 <!-- split index.php -->,
 
-<!-- split footer.php -->
+<!-- split footer.php -->.
 
 )
 
@@ -24,15 +24,14 @@ To all your other files you need to wrap your content "without header and footer
 
 (
 
-<!-- split "filename".php -->
+<!-- split "filename".php -->,
 
-<!-- split stop -->
+<!-- split stop -->.
 
 )
 
 Step 3.
 When you are done with this you can start working in your cmd...
-
 
 Run $ npm install
 
