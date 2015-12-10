@@ -28,7 +28,7 @@ gulp.task('create-stylecss', function() {
 
 
 
-// Do stuff after 'create-stylecss' is done
+  // Do stuff after 'create-stylecss' is done
 gulp.task('replace', function(){
   gulp.src(['../html/app/styles/main.scss'])
   // Replace @import bootstrap link
