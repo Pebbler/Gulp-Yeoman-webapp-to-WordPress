@@ -37,7 +37,7 @@ gulp.task('replace', function(){
 
   // Replace TEMPLATENAME with actuall template name
   gulp.src(['./src/functions.php'])
-  .pipe(replace('TEMPLATENAME', 'TEMPLATENAME'))
+  .pipe(replace('TEMPLATENAME', pkg.name))
   .pipe(gulp.dest('../wordpress'));
 
   return gulp.src(['../html/dist/*.html'])
@@ -50,9 +50,9 @@ gulp.task('replace', function(){
 
   // Add wp_head and wp_footer
   .pipe(replace(/<title>.{0,}<\/title>/, '<title><?php wp_title(); ?></title>'))
-  .pipe(replace('</head>', '<?php wp_head(); ?>' + '\n' + '  </head>'))
-  .pipe(replace('</body>', '<?php wp_footer(); ?></body>'))
-  // Note
+  .pipe(replace('</head>', '<?php wp_head(); ?> ' + '\n' + '  </head>'))
+  .pipe(replace('</body>', '<?php wp_footer(); ?> ' + '\n' + ' </body>'))
+  // Console Message
   .pipe(notify("<%= file.relative %> is now completely changed!"))
   .pipe(gulp.dest('../html/tmp'));
 });
@@ -64,6 +64,7 @@ gulp.task('build-prod', function() {
   return gulp.src('../html/tmp/*.html')
     .pipe(htmlsplit())
     .pipe(gulp.dest('../wordpress'))
+  // Console Message
     .pipe(notify("<%= file.relative %> is now located in the Wordpress folder!"));
 
 })
@@ -89,12 +90,14 @@ gulp.task('copy-files', function () {
 gulp.task('wrap', function(){
   return gulp.src(['../wordpress/*.php', '!../wordpress/functions.php', '!../wordpress/header.php', '!../wordpress/footer.php'])
   .pipe(insert.wrap('<?php get_header(); ?>' + '\n', '\n' + '<?php get_footer();?>'))
+  // Console Message
   .pipe(notify("<%= file.relative %> is now wrapped by get_header and get_footer"))
   .pipe(gulp.dest('../wordpress'));
 });
 
 gulp.task('finish', function(){
-  return gulp.src(['../wordpress']).pipe(notify("Your Wordpress Template is now ready!"));
+  // Console Message
+  return gulp.src(['../wordpress']).pipe(notify("Your Wordpress Template for " + pkg.name + " is now ready!"));
 });
 
 gulp.task('start', function() {
@@ -104,7 +107,7 @@ gulp.task('start', function() {
     'build-prod', // Split index.html into[ Header.html, Footer.html, Index.html ]
     'copy-files', // Do stuff after 'templates' is done
     'wrap', // Add <?php get_header(); ?> & <?php get_footer();?>
-    'finish'
+    'finish' // Showing a message saying sequence is done
   );
 });
 
