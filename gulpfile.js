@@ -46,7 +46,7 @@ gulp.task('replace', function(){
   .pipe(replace('src="scripts', 'src="<?php echo get_template_directory_uri(); ?>/scripts'))
 
   // Change styles/main.css path to css/main.css
-  .pipe(replace('styles/main.css', 'css/main.css'))
+  .pipe(replace('styles/main.css', '<?php echo get_template_directory_uri(); ?>/css/main.css'))
 
   // Add wp_head and wp_footer
   .pipe(replace(/<title>.{0,}<\/title>/, '<title><?php wp_title(); ?></title>'))
