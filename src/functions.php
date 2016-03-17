@@ -37,7 +37,7 @@ function remove_width_attribute( $html ) {
 function add_image_responsive_class($content) {
    global $post;
    $pattern ="/<img(.*?)class=\"(.*?)\"(.*?)>/i";
-   $replacement = '<img$1class="$2 img-responsive panel"$3>';
+   $replacement = '<img$1class="$2 img-responsive"$3>';
    $content = preg_replace($pattern, $replacement, $content);
    return $content;
 }
