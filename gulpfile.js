@@ -42,7 +42,7 @@ gulp.task('replace', function(){
 
   return gulp.src(['../html/dist/*.html'])
   // Add get_template_directory_uri to links
-  .pipe(replace('src="images/', 'img src="<?php echo get_template_directory_uri(); ?>/images/'))
+  .pipe(replace('src="images/', 'src="<?php echo get_template_directory_uri(); ?>/images/'))
   .pipe(replace('src="scripts', 'src="<?php echo get_template_directory_uri(); ?>/scripts'))
 
   // Change styles/main.css path to css/main.css
