@@ -8,13 +8,12 @@ index.html:
 
 Add these comments so gulp will recognize you want to split-up your index file to create a header.php and footer.php:
 
-((ignore , & . they are there becuase it wont show the comment otherwise)
 
-<!-- split header.php -->,
+`<!-- split header.php -->`
 
-<!-- split index.php -->,
+`<!-- split index.php -->`
 
-<!-- split footer.php -->.
+`<!-- split footer.php -->`
 
 )
 
@@ -24,9 +23,9 @@ To all your other files you need to wrap your content "without header and footer
 
 (
 
-<!-- split "filename".php -->,
+`<!-- split "filename".php -->`
 
-<!-- split stop -->.
+`<!-- split stop -->`
 
 )
 
